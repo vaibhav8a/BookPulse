@@ -1,0 +1,27 @@
+{
+    "name": "bookpulse-server",
+    "version": "1.0.0",
+    "description": "BookPulse backend server with Express and MongoDB",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "keywords": [
+        "express",
+        "mongodb",
+        "bookpulse"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "mongoose": "^7.0.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
