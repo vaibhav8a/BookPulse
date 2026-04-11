@@ -4,45 +4,81 @@
 
 import mongoose from 'mongoose';
 
-// Define the Book schema
+// Define the Book schema (Amazon Bestseller Dataset)
 const bookSchema = new mongoose.Schema(
     {
+        // ========== BASIC INFORMATION ==========
         title: {
             type: String,
             required: true,
             trim: true,
+            description: 'The title of the book',
         },
         author: {
             type: String,
             required: true,
             trim: true,
+            description: 'The author(s) of the book',
         },
-        description: {
+        brand: {
             type: String,
+            trim: true,
             default: '',
+            description: 'The brand/publisher brand name',
         },
+        manufacturer: {
+            type: String,
+            trim: true,
+            default: '',
+            description: 'The manufacturer/publisher of the book',
+        },
+
+        // ========== RANKING & REVIEWS ==========
+        rank: {
+            type: Number,
+            required: true,
+            min: 1,
+            description: 'Amazon bestseller ranking (1 = top ranked)',
+        },
+        reviewCount: {
+            type: Number,
+            default: 0,
+            min: 0,
+            description: 'Number of reviews the book has received',
+        },
+        reviews: {
+            type: Number,
+            default: 0,
+            min: 0,
+            description: 'Average review rating (0-5 scale)',
+        },
+
+        // ========== PRICING & AVAILABILITY ==========
         price: {
             type: Number,
             required: true,
             min: 0,
+            description: 'Price of the book in USD',
         },
-        rating: {
-            type: Number,
-            default: 0,
-            min: 0,
-            max: 5,
+
+        // ========== CATEGORIZATION ==========
+        genre: {
+            type: String,
+            required: true,
+            trim: true,
+            description: 'Book genre/category (e.g., Fiction, Science, History)',
         },
-        bestsellerRank: {
+
+        // ========== CONTENT DETAILS ==========
+        numberOfPages: {
             type: Number,
             default: null,
-        },
-        category: {
-            type: String,
-            default: 'General',
+            min: 1,
+            description: 'Total number of pages in the book',
         },
     },
     {
-        timestamps: true, // Automatically add createdAt and updatedAt
+        timestamps: true, // Automatically add createdAt and updatedAt fields
     }
 );
 

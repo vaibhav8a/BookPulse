@@ -7,6 +7,7 @@ import connectDB from './config/db.js';
 import { corsMiddleware } from './middleware/cors.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import routes from './routes/index.js';
+import booksRoutes from './routes/books.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -34,8 +35,11 @@ app.use(express.urlencoded({ extended: true }));
 // ROUTES
 // =====================
 
-// Use main routes
+// Use main routes (health check, status)
 app.use('/api', routes);
+
+// Use book routes (CRUD operations)
+app.use('/api/books', booksRoutes);
 
 // =====================
 // ERROR HANDLING
